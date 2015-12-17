@@ -1,0 +1,31 @@
+<html>
+
+{% extends 'bootstrap/base.html' %}
+	{% block content %}
+
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+<body>
+	<a href="{{url_for('gdisconnect')}}">Click Here to Log Out </a>
+
+<h1> Edit Wardrobe </h1>
+
+
+<form action="{{ url_for('editWardrobe',wardrobe_id = wardrobe.id)}}" method = 'post'>
+
+
+	<p>Name:</p>
+		<input type ='text' size='30' name='name' placeholder = '{{wardrobe.name }}'>
+
+
+<input type='submit' value='Edit'>
+
+
+<a href = '{{url_for('showWardrobes')}}'> Cancel </a>
+
+</form>
+</body>
+{% endblock %}
+</html>

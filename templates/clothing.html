@@ -1,0 +1,112 @@
+<html>
+{% extends 'bootstrap/base.html' %}
+	{% block content %}
+	<body>
+			<div class="col-md-12">
+			<a href="{{url_for('gdisconnect')}}">Log Out </a>
+			<br />
+			<a href="{{url_for('showWardrobes')}}">See All Wardrobes </a>
+		</div>
+		<div class="row banner menu">
+			<div class="col-md-11 col-md-offset-1 padding-none">
+				<h1>{{ wardrobe.name }}
+				<figure class="creator">
+					<img src="{{ creator.picture}}">
+					<figcaption>Created by: {{ creator.name }}</figcaption>
+				</figure>
+				</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<ul>
+							{% for message in messages %}
+								 <li> <strong> {{ message }} </strong> </li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				{% endwith %}
+			</div>
+			</div>
+
+    {% if clothing !=[] %}
+
+		<div class="row">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-3">
+				<a href = "{{url_for('newClothing', wardrobe_id = wardrobe.id )}}">Add New Clothing</a>
+				<h2>Accessories</h2>
+					{% for c in clothing %}
+						{% if c.function == 'Accessory' %}
+							<div class="menu-item">
+								<h3>{{c.name}}</h3>
+								<p>{{c.description}}</p>
+								<a href='{{url_for('editClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Edit</a>
+							</br>
+							<a href='{{url_for('deleteClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Delete</a>
+						</br>
+					</br>
+					{% endif %}
+				{% endfor %}
+			</div>
+
+		</div>
+
+		<div class="col-md-4">
+			<h2>Shirts</h2>
+				{% for c in clothing %}
+					{% if c.function == 'Shirt' %}
+					<div class="menu-item">
+						<h3>{{c.name}}</h3>
+						<p>{{c.description}}</p>
+						<a href='{{url_for('editClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Edit</a>
+						</br>
+						<a href='{{url_for('deleteClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Delete</a>
+						</br></br>
+						</div>
+					{% endif %}
+				{% endfor %}
+		</div>
+
+		<div class="col-md-3">
+			<h2>Pants</h2>
+				{% for c in clothing %}
+					{% if c.function == 'Pants' %}
+					<div class="menu-item">
+						<h3>{{c.name}}</h3>
+						<p>{{c.description}}</p>
+							<a href='{{url_for('editClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Edit</a>
+							</br>
+							<a href='{{url_for('deleteClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Delete</a>
+						</br>
+						</br>
+					</div>
+					{% endif %}
+				{% endfor %}
+
+	<h2>Shoes</h2>
+	{% for c in clothing %}
+		{% if c.function == 'Shoes' %}
+		<div class="menu-item">
+			<h3>{{c.name}}</h3>
+			<p>{{c.description}}</p>
+			<a href='{{url_for('editClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Edit</a>
+				</br>
+				<a href='{{url_for('deleteClothing', wardrobe_id = wardrobe.id, clothing_id=c.id ) }}' >Delete</a>
+			</br>
+			</br>
+		</div>
+		{% endif %}
+	{% endfor %}
+	</div>
+	{% else %}
+		<p> You currently have no menu items. <p>
+		<a href = '{{url_for('newClothing', wardrobe_id = wardrobe.id )}}'>Add New Clothing</a>
+		{% endif %}
+</div>
+	</body>
+{% endblock %}
+</html>

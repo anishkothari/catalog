@@ -1,0 +1,30 @@
+<html>
+
+{% extends 'bootstrap/base.html' %}
+	{% block content %}
+<body>
+
+<h1>New Clothing</h1>
+
+<form action="#" method = 'POST'>
+
+
+	<p>Name:</p>
+		<input type ='text' size='30' name='name'>
+	<p>Description:</p>
+		<input type ='text' size='30' name='description'>
+	<p>Function:</p>
+		<input type ='radio'  name='function' value ='Accessory'>Accessory</br>
+		<input type ='radio'  name='function' value ='Shirt'>Shirt</br>
+		<input type ='radio' name='function' value ='Pants'>Pants</br>
+		<input type ='radio'  name='function' value ='Shoes'>Shoes</br>
+	</br>
+
+
+<input type='submit' value='Create'>
+<a href = '{{url_for('showWardrobes')}}'> Cancel </a>
+
+</form>
+{% endblock %}
+</body>
+</html>

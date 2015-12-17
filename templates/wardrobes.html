@@ -1,0 +1,33 @@
+<html>
+{% extends 'bootstrap/base.html' %}
+	{% block content %}
+	<a href="{{url_for('gdisconnect')}}">Click Here to Log Out </a>
+<body>
+	<div class = 'flash'>
+					{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+						<p> <strong> {{ message }} </strong> </p>
+				{% endfor %}
+				{% endif %}
+		{% endwith %}
+
+</div>
+
+<a href="{{url_for('newWardrobe')}}" > <h3> Create a New Wardrobe </h3> </a>
+
+	<h1>Wardrobes</h1>
+		{% for wardrobe in wardrobes %}
+			<a href = "{{url_for('showClothing', wardrobe_id = wardrobe.id)}}">
+				<div class="row">
+						<div class="col-md-10">
+							<h3>{{wardrobe.name}}</h3>
+							<p><a href = "{{url_for('editWardrobe',wardrobe_id = wardrobe.id)}}">Edit Wardrobe</a></p>
+							<p><a href = "{{url_for('deleteWardrobe',wardrobe_id = wardrobe.id)}}">Delete Wardrobe</a> </p>
+						</div>
+				</div>
+		{% endfor %}
+	{% endblock %}
+</body>
+
+</html>

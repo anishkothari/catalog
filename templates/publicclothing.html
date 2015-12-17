@@ -1,0 +1,83 @@
+{% extends 'bootstrap/base.html' %}
+	{% block content %}
+	<div class="col-md-12">
+	<a href="{{url_for('showWardrobes')}}">See All Wardrobes </a>
+</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ wardrobe.name }}
+			<figure class="creator">
+				<img src="{{ creator.picture}}">
+				<figcaption>Created by: {{ creator.name }}</figcaption>
+			</figure>
+			</h1>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+						{% for message in messages %}
+							 <li> <strong> {{ message }} </strong> </li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
+	</div>
+
+	{% if clothing !=[] %}
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<h2>Accessories</h2>
+					{% for c in clothing %}
+						{% if c.function == 'Accessory' %}
+							<div class="menu-item">
+								<h3>{{c.name}}</h3>
+								<p>{{c.description}}</p>
+
+							</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-4">
+				<h2>Shirts</h2>
+					{% for c in clothing %}
+						{% if c.function == 'Shirt' %}
+						<div class="menu-item">
+							<h3>{{c.name}}</h3>
+							<p>{{c.description}}</p>
+
+						</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-3">
+				<h2>Pants</h2>
+					{% for c in clothing %}
+						{% if c.function == 'Pants' %}
+						<div class="menu-item">
+							<h3>{{c.name}}</h3>
+							<p>{{c.description}}</p>
+
+						</div>
+						{% endif %}
+					{% endfor %}
+				<h2>Shoes</h2>
+					{% for c in clothing %}
+						{% if c.function == 'Shoes' %}
+						<div class="menu-item">
+							<h3>{{c.name}}</h3>
+							<p>{{c.description}}</p>
+
+						</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
