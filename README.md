@@ -2,7 +2,7 @@
 
 This is project #3 of Udacity's Full-Stack Nanodegree program.
 
-This project runs on the Flask web framework using Python 2.7. Features include Google sign-in and the ability to create, read, update and delete items from the database. There are JSON endpoints as well.
+This app has CRUD functionality and runs on the Flask web framework using Python 2.7 with a PostgreSQL database. Features include Google sign-in and the ability to create, read, update and delete items from the database. There are JSON endpoints as well.
 
 To run:
 1. Clone this repository locally
